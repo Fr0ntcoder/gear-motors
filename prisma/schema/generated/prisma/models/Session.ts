@@ -317,22 +317,6 @@ export type SessionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder | runtime.Types.Skip
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string | runtime.Types.Skip
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | runtime.Types.Skip
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean | runtime.Types.Skip
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null | runtime.Types.Skip
-}
-
 export type SessionCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.SessionCreateWithoutUserInput, Prisma.SessionUncheckedCreateWithoutUserInput> | Prisma.SessionCreateWithoutUserInput[] | Prisma.SessionUncheckedCreateWithoutUserInput[] | runtime.Types.Skip
   connectOrCreate?: Prisma.SessionCreateOrConnectWithoutUserInput | Prisma.SessionCreateOrConnectWithoutUserInput[] | runtime.Types.Skip

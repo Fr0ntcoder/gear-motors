@@ -9,7 +9,97 @@
 * 🟢 You can import this file directly.
 */
 
+export const ClassifiedStatus = {
+  LIVE: 'LIVE',
+  DRAFT: 'DRAFT',
+  SOLD: 'SOLD'
+} as const
+
+export type ClassifiedStatus = (typeof ClassifiedStatus)[keyof typeof ClassifiedStatus]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const Currency = {
+  RUB: 'RUB',
+  USD: 'USD',
+  EUR: 'EUR',
+  GBP: 'GBP',
+  CNY: 'CNY'
+} as const
+
+export type Currency = (typeof Currency)[keyof typeof Currency]
+
+
+export const OdoUnit = {
+  MILES: 'MILES',
+  KILOMETERS: 'KILOMETERS'
+} as const
+
+export type OdoUnit = (typeof OdoUnit)[keyof typeof OdoUnit]
+
+
+export const UlesComplience = {
+  EXEMPT: 'EXEMPT',
+  NON_EXEMPT: 'NON_EXEMPT'
+} as const
+
+export type UlesComplience = (typeof UlesComplience)[keyof typeof UlesComplience]
+
+
+export const Transmission = {
+  MANUAL: 'MANUAL',
+  AUTOMATIC: 'AUTOMATIC'
+} as const
+
+export type Transmission = (typeof Transmission)[keyof typeof Transmission]
+
+
+export const Color = {
+  BLACK: 'BLACK',
+  BLUE: 'BLUE',
+  BROWN: 'BROWN',
+  GOLD: 'GOLD',
+  GREEN: 'GREEN',
+  GREY: 'GREY',
+  ORANGE: 'ORANGE',
+  PINK: 'PINK',
+  PURPLE: 'PURPLE',
+  RED: 'RED',
+  SILVER: 'SILVER',
+  WHITE: 'WHITE',
+  YELLOW: 'YELLOW'
+} as const
+
+export type Color = (typeof Color)[keyof typeof Color]
+
+
+export const FuelType = {
+  PETROL: 'PETROL',
+  DIESEL: 'DIESEL',
+  ELECTRIC: 'ELECTRIC',
+  HYBRID: 'HYBRID'
+} as const
+
+export type FuelType = (typeof FuelType)[keyof typeof FuelType]
+
+
+export const BodyType = {
+  SEDAN: 'SEDAN',
+  HATCHBACK: 'HATCHBACK',
+  SUV: 'SUV',
+  COUPE: 'COUPE',
+  CONVERTIBLE: 'CONVERTIBLE',
+  WAGON: 'WAGON'
+} as const
+
+export type BodyType = (typeof BodyType)[keyof typeof BodyType]
+
+
+export const CustomerStatus = {
+  SUBSCRIBER: 'SUBSCRIBER',
+  INTERESTED: 'INTERESTED',
+  CONTACTED: 'CONTACTED',
+  PURCHASED: 'PURCHASED',
+  COLD: 'COLD'
+} as const
+
+export type CustomerStatus = (typeof CustomerStatus)[keyof typeof CustomerStatus]

@@ -8,6 +8,14 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Classified'
+export type * from './models/Customer'
+export type * from './models/CustomerLifecycle'
+export type * from './models/Image'
+export type * from './models/PageView'
 export type * from './models/Session'
+export type * from './models/Make'
+export type * from './models/Model'
+export type * from './models/ModelVariant'
 export type * from './models/User'
 export type * from './commonInputTypes'

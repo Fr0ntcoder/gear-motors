@@ -51,7 +51,15 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Classified: 'Classified',
+  Customer: 'Customer',
+  CustomerLifecycle: 'CustomerLifecycle',
+  Image: 'Image',
+  PageView: 'PageView',
   Session: 'Session',
+  Make: 'Make',
+  Model: 'Model',
+  ModelVariant: 'ModelVariant',
   User: 'User'
 } as const
 
@@ -71,6 +79,89 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const ClassifiedScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  views: 'views',
+  slug: 'slug',
+  vrm: 'vrm',
+  year: 'year',
+  odoReading: 'odoReading',
+  doors: 'doors',
+  seats: 'seats',
+  price: 'price',
+  makeId: 'makeId',
+  modelId: 'modelId',
+  modelVariantId: 'modelVariantId',
+  ulezCompliance: 'ulezCompliance',
+  transmission: 'transmission',
+  fuelType: 'fuelType',
+  bodyType: 'bodyType',
+  color: 'color',
+  odoUnit: 'odoUnit',
+  currency: 'currency',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClassifiedScalarFieldEnum = (typeof ClassifiedScalarFieldEnum)[keyof typeof ClassifiedScalarFieldEnum]
+
+
+export const CustomerScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  mobile: 'mobile',
+  bookingDate: 'bookingDate',
+  termsAccepted: 'termsAccepted',
+  status: 'status',
+  classifiedId: 'classifiedId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
+
+
+export const CustomerLifecycleScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  oldStatus: 'oldStatus',
+  newStatus: 'newStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CustomerLifecycleScalarFieldEnum = (typeof CustomerLifecycleScalarFieldEnum)[keyof typeof CustomerLifecycleScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  alt: 'alt',
+  src: 'src',
+  classifiedId: 'classifiedId',
+  blurhash: 'blurhash',
+  isMain: 'isMain'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+export const PageViewScalarFieldEnum = {
+  id: 'id',
+  path: 'path',
+  viewedAt: 'viewedAt',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  referrer: 'referrer'
+} as const
+
+export type PageViewScalarFieldEnum = (typeof PageViewScalarFieldEnum)[keyof typeof PageViewScalarFieldEnum]
+
+
 export const SessionScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -80,6 +171,41 @@ export const SessionScalarFieldEnum = {
 } as const
 
 export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const MakeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MakeScalarFieldEnum = (typeof MakeScalarFieldEnum)[keyof typeof MakeScalarFieldEnum]
+
+
+export const ModelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  makeId: 'makeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ModelScalarFieldEnum = (typeof ModelScalarFieldEnum)[keyof typeof ModelScalarFieldEnum]
+
+
+export const ModelVariantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  yearStart: 'yearStart',
+  yearEnd: 'yearEnd',
+  modelId: 'modelId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ModelVariantScalarFieldEnum = (typeof ModelVariantScalarFieldEnum)[keyof typeof ModelVariantScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {

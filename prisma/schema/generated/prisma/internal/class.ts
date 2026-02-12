@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.3.0",
   "engineVersion": "9d6ad21cbbceab97458517b147a6a09ff43aa735",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client\"\n  output          = \"./generated/prisma\"\n  previewFeatures = [\"strictUndefinedChecks\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)\n  userId       String?\n  sessionToken String   @unique @map(\"session_token\")\n  expires      DateTime\n  requiresFa   Boolean  @default(true)\n\n  @@map(\"sessions\")\n}\n\nmodel User {\n  id             String    @id @default(cuid())\n  email          String    @unique\n  hashedPassword String    @map(\"hashed_password\")\n  sessions       Session[]\n  createdAt      DateTime  @default(now())\n  updatedAt      DateTime  @updatedAt\n\n  @@map(\"users\")\n}\n",
+  "inlineSchema": "model Classified {\n  id             Int              @id @default(autoincrement())\n  title          String?\n  description    String?\n  views          Int              @default(0)\n  slug           String           @unique\n  vrm            String?\n  year           Int\n  odoReading     Int              @default(0) @map(\"odo_reading\")\n  doors          Int              @default(2)\n  seats          Int              @default(5)\n  price          Int              @default(0) @map(\"price\")\n  make           Make             @relation(fields: [makeId], references: [id])\n  makeId         Int              @map(\"make_id\")\n  model          Model            @relation(fields: [modelId], references: [id])\n  modelId        Int              @map(\"model_id\")\n  modelVariant   ModelVariant?    @relation(fields: [modelVariantId], references: [id])\n  modelVariantId Int              @map(\"model_variant_id\")\n  ulezCompliance UlesComplience   @default(EXEMPT)\n  transmission   Transmission     @default(MANUAL)\n  fuelType       FuelType         @default(PETROL)\n  bodyType       BodyType         @default(SEDAN)\n  color          Color            @default(BLACK)\n  odoUnit        OdoUnit          @default(KILOMETERS)\n  currency       Currency         @default(RUB)\n  images         Image[]\n  customers      Customer[]\n  status         ClassifiedStatus @default(LIVE)\n  createdAt      DateTime         @default(now()) @map(\"created_at\")\n  updatedAt      DateTime         @updatedAt @map(\"updated_at\")\n\n  @@index([makeId, modelId], name: \"index_make_model\")\n  @@index([status], name: \"index_status\")\n  @@index([price], name: \"index_price\")\n  @@map(\"classifieds\")\n}\n\nenum ClassifiedStatus {\n  LIVE\n  DRAFT\n  SOLD\n}\n\nenum Currency {\n  RUB\n  USD\n  EUR\n  GBP\n  CNY\n}\n\nenum OdoUnit {\n  MILES\n  KILOMETERS\n}\n\nenum UlesComplience {\n  EXEMPT\n  NON_EXEMPT\n}\n\nenum Transmission {\n  MANUAL\n  AUTOMATIC\n}\n\nenum Color {\n  BLACK\n  BLUE\n  BROWN\n  GOLD\n  GREEN\n  GREY\n  ORANGE\n  PINK\n  PURPLE\n  RED\n  SILVER\n  WHITE\n  YELLOW\n}\n\nenum FuelType {\n  PETROL\n  DIESEL\n  ELECTRIC\n  HYBRID\n}\n\nenum BodyType {\n  SEDAN\n  HATCHBACK\n  SUV\n  COUPE\n  CONVERTIBLE\n  WAGON\n}\n\nmodel Customer {\n  id            Int            @id @default(autoincrement())\n  firstName     String\n  lastName      String\n  email         String\n  mobile        String?\n  bookingDate   DateTime?      @map(\"booking_date\")\n  termsAccepted Boolean        @default(false) @map(\"terms_accepted\")\n  status        CustomerStatus @default(INTERESTED)\n  classified    Classified?    @relation(fields: [classifiedId], references: [id])\n  classifiedId  Int?           @map(\"classified_id\")\n\n  createdAt DateTime            @default(now()) @map(\"created_at\")\n  updatedAt DateTime            @updatedAt @map(\"updated_at\")\n  lifecycle CustomerLifecycle[]\n\n  @@map(\"customers\")\n}\n\nenum CustomerStatus {\n  SUBSCRIBER\n  INTERESTED\n  CONTACTED\n  PURCHASED\n  COLD\n}\n\nmodel CustomerLifecycle {\n  id         Int            @id @default(autoincrement())\n  customer   Customer       @relation(fields: [customerId], references: [id], onDelete: Cascade)\n  customerId Int            @map(\"customer_id\")\n  oldStatus  CustomerStatus @map(\"old_status\")\n  newStatus  CustomerStatus @map(\"new_status\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@unique([customerId, oldStatus])\n  @@map(\"customer_lifecycle\")\n}\n\nmodel Image {\n  id           Int        @id @default(autoincrement())\n  alt          String\n  src          String\n  classified   Classified @relation(fields: [classifiedId], references: [id], onDelete: Cascade)\n  classifiedId Int        @map(\"classified_id\")\n  blurhash     String\n  isMain       Boolean    @default(false) @map(\"is_main\")\n\n  @@map(\"images\")\n}\n\nmodel PageView {\n  id        Int      @id @default(autoincrement())\n  path      String\n  viewedAt  DateTime @default(now()) @map(\"viewed_at\")\n  ipAddress String?\n  userAgent String?\n  referrer  String?\n\n  @@index([path, viewedAt])\n  @@map(\"page_views\")\n}\n\ngenerator client {\n  provider        = \"prisma-client\"\n  output          = \"./generated/prisma\"\n  previewFeatures = [\"strictUndefinedChecks\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)\n  userId       String?\n  sessionToken String   @unique @map(\"session_token\")\n  expires      DateTime\n  requiresFa   Boolean  @default(true)\n\n  @@map(\"sessions\")\n}\n\nmodel Make {\n  id          Int          @id @default(autoincrement())\n  name        String       @unique\n  image       String\n  models      Model[]\n  classifieds Classified[]\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"makes\")\n}\n\nmodel Model {\n  id            Int            @id @default(autoincrement())\n  name          String\n  makeId        Int            @map(\"make_id\")\n  make          Make           @relation(fields: [makeId], references: [id], onDelete: Cascade)\n  modelVariants ModelVariant[]\n  classifieds   Classified[]\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@unique([makeId, name])\n  @@map(\"models\")\n}\n\nmodel ModelVariant {\n  id          Int          @id @default(autoincrement())\n  name        String\n  yearStart   Int\n  yearEnd     Int\n  model       Model        @relation(fields: [modelId], references: [id], onDelete: Cascade)\n  modelId     Int          @map(\"model_id\")\n  classifieds Classified[]\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@unique([modelId, name])\n  @@map(\"model_variants\")\n}\n\nmodel User {\n  id             String    @id @default(cuid())\n  email          String    @unique\n  hashedPassword String    @map(\"hashed_password\")\n  sessions       Session[]\n  createdAt      DateTime  @default(now()) @map(\"created_at\")\n  updatedAt      DateTime  @updatedAt @map(\"updated_at\")\n\n  @@map(\"users\")\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -30,7 +30,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessionToken\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"session_token\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"requiresFa\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":\"sessions\"},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hashedPassword\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"hashed_password\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"users\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Classified\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"views\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"vrm\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"odoReading\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"odo_reading\"},{\"name\":\"doors\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"seats\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"price\"},{\"name\":\"make\",\"kind\":\"object\",\"type\":\"Make\",\"relationName\":\"ClassifiedToMake\"},{\"name\":\"makeId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"make_id\"},{\"name\":\"model\",\"kind\":\"object\",\"type\":\"Model\",\"relationName\":\"ClassifiedToModel\"},{\"name\":\"modelId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"model_id\"},{\"name\":\"modelVariant\",\"kind\":\"object\",\"type\":\"ModelVariant\",\"relationName\":\"ClassifiedToModelVariant\"},{\"name\":\"modelVariantId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"model_variant_id\"},{\"name\":\"ulezCompliance\",\"kind\":\"enum\",\"type\":\"UlesComplience\"},{\"name\":\"transmission\",\"kind\":\"enum\",\"type\":\"Transmission\"},{\"name\":\"fuelType\",\"kind\":\"enum\",\"type\":\"FuelType\"},{\"name\":\"bodyType\",\"kind\":\"enum\",\"type\":\"BodyType\"},{\"name\":\"color\",\"kind\":\"enum\",\"type\":\"Color\"},{\"name\":\"odoUnit\",\"kind\":\"enum\",\"type\":\"OdoUnit\"},{\"name\":\"currency\",\"kind\":\"enum\",\"type\":\"Currency\"},{\"name\":\"images\",\"kind\":\"object\",\"type\":\"Image\",\"relationName\":\"ClassifiedToImage\"},{\"name\":\"customers\",\"kind\":\"object\",\"type\":\"Customer\",\"relationName\":\"ClassifiedToCustomer\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"ClassifiedStatus\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"classifieds\"},\"Customer\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobile\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bookingDate\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"booking_date\"},{\"name\":\"termsAccepted\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"terms_accepted\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"CustomerStatus\"},{\"name\":\"classified\",\"kind\":\"object\",\"type\":\"Classified\",\"relationName\":\"ClassifiedToCustomer\"},{\"name\":\"classifiedId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"classified_id\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"},{\"name\":\"lifecycle\",\"kind\":\"object\",\"type\":\"CustomerLifecycle\",\"relationName\":\"CustomerToCustomerLifecycle\"}],\"dbName\":\"customers\"},\"CustomerLifecycle\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"customer\",\"kind\":\"object\",\"type\":\"Customer\",\"relationName\":\"CustomerToCustomerLifecycle\"},{\"name\":\"customerId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"customer_id\"},{\"name\":\"oldStatus\",\"kind\":\"enum\",\"type\":\"CustomerStatus\",\"dbName\":\"old_status\"},{\"name\":\"newStatus\",\"kind\":\"enum\",\"type\":\"CustomerStatus\",\"dbName\":\"new_status\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"customer_lifecycle\"},\"Image\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"alt\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"src\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"classified\",\"kind\":\"object\",\"type\":\"Classified\",\"relationName\":\"ClassifiedToImage\"},{\"name\":\"classifiedId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"classified_id\"},{\"name\":\"blurhash\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isMain\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"is_main\"}],\"dbName\":\"images\"},\"PageView\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"path\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"viewedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"viewed_at\"},{\"name\":\"ipAddress\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userAgent\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"referrer\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"page_views\"},\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessionToken\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"session_token\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"requiresFa\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":\"sessions\"},\"Make\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"models\",\"kind\":\"object\",\"type\":\"Model\",\"relationName\":\"MakeToModel\"},{\"name\":\"classifieds\",\"kind\":\"object\",\"type\":\"Classified\",\"relationName\":\"ClassifiedToMake\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"makes\"},\"Model\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"makeId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"make_id\"},{\"name\":\"make\",\"kind\":\"object\",\"type\":\"Make\",\"relationName\":\"MakeToModel\"},{\"name\":\"modelVariants\",\"kind\":\"object\",\"type\":\"ModelVariant\",\"relationName\":\"ModelToModelVariant\"},{\"name\":\"classifieds\",\"kind\":\"object\",\"type\":\"Classified\",\"relationName\":\"ClassifiedToModel\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"models\"},\"ModelVariant\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"yearStart\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"yearEnd\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"model\",\"kind\":\"object\",\"type\":\"Model\",\"relationName\":\"ModelToModelVariant\"},{\"name\":\"modelId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"model_id\"},{\"name\":\"classifieds\",\"kind\":\"object\",\"type\":\"Classified\",\"relationName\":\"ClassifiedToModelVariant\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"model_variants\"},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hashedPassword\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"hashed_password\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"users\"}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -62,8 +62,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Sessions
-   * const sessions = await prisma.session.findMany()
+   * // Fetch zero or more Classifieds
+   * const classifieds = await prisma.classified.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -84,8 +84,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Sessions
- * const sessions = await prisma.session.findMany()
+ * // Fetch zero or more Classifieds
+ * const classifieds = await prisma.classified.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -179,6 +179,56 @@ export interface PrismaClient<
   }>>
 
       /**
+   * `prisma.classified`: Exposes CRUD operations for the **Classified** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Classifieds
+    * const classifieds = await prisma.classified.findMany()
+    * ```
+    */
+  get classified(): Prisma.ClassifiedDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.customer`: Exposes CRUD operations for the **Customer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Customers
+    * const customers = await prisma.customer.findMany()
+    * ```
+    */
+  get customer(): Prisma.CustomerDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.customerLifecycle`: Exposes CRUD operations for the **CustomerLifecycle** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CustomerLifecycles
+    * const customerLifecycles = await prisma.customerLifecycle.findMany()
+    * ```
+    */
+  get customerLifecycle(): Prisma.CustomerLifecycleDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.image`: Exposes CRUD operations for the **Image** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Images
+    * const images = await prisma.image.findMany()
+    * ```
+    */
+  get image(): Prisma.ImageDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.pageView`: Exposes CRUD operations for the **PageView** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PageViews
+    * const pageViews = await prisma.pageView.findMany()
+    * ```
+    */
+  get pageView(): Prisma.PageViewDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
    * `prisma.session`: Exposes CRUD operations for the **Session** model.
     * Example usage:
     * ```ts
@@ -187,6 +237,36 @@ export interface PrismaClient<
     * ```
     */
   get session(): Prisma.SessionDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.make`: Exposes CRUD operations for the **Make** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Makes
+    * const makes = await prisma.make.findMany()
+    * ```
+    */
+  get make(): Prisma.MakeDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.model`: Exposes CRUD operations for the **Model** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Models
+    * const models = await prisma.model.findMany()
+    * ```
+    */
+  get model(): Prisma.ModelDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.modelVariant`: Exposes CRUD operations for the **ModelVariant** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ModelVariants
+    * const modelVariants = await prisma.modelVariant.findMany()
+    * ```
+    */
+  get modelVariant(): Prisma.ModelVariantDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
