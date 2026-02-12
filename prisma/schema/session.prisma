@@ -1,0 +1,10 @@
+model Session {
+  id           String   @id @default(cuid())
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String?
+  sessionToken String   @unique @map("session_token")
+  expires      DateTime
+  requiresFa   Boolean  @default(true)
+
+  @@map("sessions")
+}
