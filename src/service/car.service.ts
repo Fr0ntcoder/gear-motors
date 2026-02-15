@@ -3,7 +3,7 @@ import { unstable_cache } from 'next/cache'
 import { prisma } from '@/shared/lib/prisma'
 import { AwaitedPageProps, IInvetoryResponse } from '@/shared/types'
 
-export const getInventory = unstable_cache(
+export const getCars = unstable_cache(
 	async (
 		searchParams: AwaitedPageProps['searchParams']
 	): Promise<IInvetoryResponse> => {
@@ -20,9 +20,9 @@ export const getInventory = unstable_cache(
 			return { items: [], error: 'Ошибка получения автомобилей' }
 		}
 	},
-	['classifieds'],
+	['cars'],
 	{
-		tags: ['classifieds'],
+		tags: ['cars'],
 		revalidate: 3600
 	}
 )

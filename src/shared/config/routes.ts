@@ -5,5 +5,6 @@ export const ROUTES = {
 		SINGLE: (slug: string) => `/cars/${slug}`,
 		STEP: (slug: string, step: MultiStepForm) =>
 			`/cars/${slug}/reserve?step=${step}`
-	}
+	},
+	FAVORITES: '/favorites'
 }

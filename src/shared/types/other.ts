@@ -16,3 +16,7 @@ export enum MultiStepForm {
 	SELECT_DATE = 2,
 	SUBMIT_DETAILS = 3
 }
+
+export interface IFavorites {
+	ids: number[]
+}
