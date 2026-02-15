@@ -389,7 +389,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Classified: 'Classified',
+  Car: 'Car',
   Customer: 'Customer',
   CustomerLifecycle: 'CustomerLifecycle',
   Image: 'Image',
@@ -414,81 +414,81 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "classified" | "customer" | "customerLifecycle" | "image" | "pageView" | "session" | "make" | "model" | "modelVariant" | "user"
+    modelProps: "car" | "customer" | "customerLifecycle" | "image" | "pageView" | "session" | "make" | "model" | "modelVariant" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Classified: {
-      payload: Prisma.$ClassifiedPayload<ExtArgs>
-      fields: Prisma.ClassifiedFieldRefs
+    Car: {
+      payload: Prisma.$CarPayload<ExtArgs>
+      fields: Prisma.CarFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.ClassifiedFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload> | null
+          args: Prisma.CarFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.ClassifiedFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>
+          args: Prisma.CarFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         findFirst: {
-          args: Prisma.ClassifiedFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload> | null
+          args: Prisma.CarFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.ClassifiedFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>
+          args: Prisma.CarFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         findMany: {
-          args: Prisma.ClassifiedFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>[]
+          args: Prisma.CarFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>[]
         }
         create: {
-          args: Prisma.ClassifiedCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>
+          args: Prisma.CarCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         createMany: {
-          args: Prisma.ClassifiedCreateManyArgs<ExtArgs>
+          args: Prisma.CarCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.ClassifiedCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>[]
+          args: Prisma.CarCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>[]
         }
         delete: {
-          args: Prisma.ClassifiedDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>
+          args: Prisma.CarDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         update: {
-          args: Prisma.ClassifiedUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>
+          args: Prisma.CarUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         deleteMany: {
-          args: Prisma.ClassifiedDeleteManyArgs<ExtArgs>
+          args: Prisma.CarDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.ClassifiedUpdateManyArgs<ExtArgs>
+          args: Prisma.CarUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.ClassifiedUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>[]
+          args: Prisma.CarUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>[]
         }
         upsert: {
-          args: Prisma.ClassifiedUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ClassifiedPayload>
+          args: Prisma.CarUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         aggregate: {
-          args: Prisma.ClassifiedAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateClassified>
+          args: Prisma.CarAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCar>
         }
         groupBy: {
-          args: Prisma.ClassifiedGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ClassifiedGroupByOutputType>[]
+          args: Prisma.CarGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarGroupByOutputType>[]
         }
         count: {
-          args: Prisma.ClassifiedCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ClassifiedCountAggregateOutputType> | number
+          args: Prisma.CarCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarCountAggregateOutputType> | number
         }
       }
     }
@@ -1197,7 +1197,7 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const ClassifiedScalarFieldEnum = {
+export const CarScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
@@ -1224,7 +1224,7 @@ export const ClassifiedScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ClassifiedScalarFieldEnum = (typeof ClassifiedScalarFieldEnum)[keyof typeof ClassifiedScalarFieldEnum]
+export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
 
 
 export const CustomerScalarFieldEnum = {
@@ -1236,7 +1236,7 @@ export const CustomerScalarFieldEnum = {
   bookingDate: 'bookingDate',
   termsAccepted: 'termsAccepted',
   status: 'status',
-  classifiedId: 'classifiedId',
+  carId: 'carId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1260,7 +1260,7 @@ export const ImageScalarFieldEnum = {
   id: 'id',
   alt: 'alt',
   src: 'src',
-  classifiedId: 'classifiedId',
+  carId: 'carId',
   blurhash: 'blurhash',
   isMain: 'isMain'
 } as const
@@ -1494,16 +1494,16 @@ export type ListEnumCurrencyFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
 
 
 /**
- * Reference to a field of type 'ClassifiedStatus'
+ * Reference to a field of type 'CarStatus'
  */
-export type EnumClassifiedStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ClassifiedStatus'>
+export type EnumCarStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarStatus'>
     
 
 
 /**
- * Reference to a field of type 'ClassifiedStatus[]'
+ * Reference to a field of type 'CarStatus[]'
  */
-export type ListEnumClassifiedStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ClassifiedStatus[]'>
+export type ListEnumCarStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarStatus[]'>
     
 
 
@@ -1650,7 +1650,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  classified?: Prisma.ClassifiedOmit
+  car?: Prisma.CarOmit
   customer?: Prisma.CustomerOmit
   customerLifecycle?: Prisma.CustomerLifecycleOmit
   image?: Prisma.ImageOmit

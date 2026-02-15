@@ -51,7 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Classified: 'Classified',
+  Car: 'Car',
   Customer: 'Customer',
   CustomerLifecycle: 'CustomerLifecycle',
   Image: 'Image',
@@ -79,7 +79,7 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const ClassifiedScalarFieldEnum = {
+export const CarScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
@@ -106,7 +106,7 @@ export const ClassifiedScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ClassifiedScalarFieldEnum = (typeof ClassifiedScalarFieldEnum)[keyof typeof ClassifiedScalarFieldEnum]
+export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
 
 
 export const CustomerScalarFieldEnum = {
@@ -118,7 +118,7 @@ export const CustomerScalarFieldEnum = {
   bookingDate: 'bookingDate',
   termsAccepted: 'termsAccepted',
   status: 'status',
-  classifiedId: 'classifiedId',
+  carId: 'carId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -142,7 +142,7 @@ export const ImageScalarFieldEnum = {
   id: 'id',
   alt: 'alt',
   src: 'src',
-  classifiedId: 'classifiedId',
+  carId: 'carId',
   blurhash: 'blurhash',
   isMain: 'isMain'
 } as const

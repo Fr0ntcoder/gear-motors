@@ -1,0 +1,97 @@
+model Car {
+  id             Int            @id @default(autoincrement())
+  title          String?
+  description    String?
+  views          Int            @default(0)
+  slug           String         @unique
+  vrm            String?
+  year           Int
+  odoReading     Int            @default(0) @map("odo_reading")
+  doors          Int            @default(2)
+  seats          Int            @default(5)
+  price          Int            @default(0) @map("price")
+  make           Make           @relation(fields: [makeId], references: [id])
+  makeId         Int            @map("make_id")
+  model          Model          @relation(fields: [modelId], references: [id])
+  modelId        Int            @map("model_id")
+  modelVariantId Int?           @map("model_variant_id")
+  modelVariant   ModelVariant?  @relation(fields: [modelVariantId], references: [id])
+  ulezCompliance UlesComplience @default(EXEMPT)
+  transmission   Transmission   @default(MANUAL)
+  fuelType       FuelType       @default(PETROL)
+  bodyType       BodyType       @default(SEDAN)
+  color          Color          @default(BLACK)
+  odoUnit        OdoUnit        @default(KILOMETERS)
+  currency       Currency       @default(RUB)
+  images         Image[]
+  customers      Customer[]
+  status         CarStatus      @default(LIVE)
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+
+  @@index([makeId, modelId], name: "index_make_model")
+  @@index([status], name: "index_status")
+  @@index([price], name: "index_price")
+  @@map("cars")
+}
+
+enum CarStatus {
+  LIVE
+  DRAFT
+  SOLD
+}
+
+enum Currency {
+  RUB
+  USD
+  EUR
+  GBP
+  CNY
+}
+
+enum OdoUnit {
+  MILES
+  KILOMETERS
+}
+
+enum UlesComplience {
+  EXEMPT
+  NON_EXEMPT
+}
+
+enum Transmission {
+  MANUAL
+  AUTOMATIC
+}
+
+enum Color {
+  BLACK
+  BLUE
+  BROWN
+  GOLD
+  GREEN
+  GREY
+  ORANGE
+  PINK
+  PURPLE
+  RED
+  SILVER
+  WHITE
+  YELLOW
+}
+
+enum FuelType {
+  PETROL
+  DIESEL
+  ELECTRIC
+  HYBRID
+}
+
+enum BodyType {
+  SEDAN
+  HATCHBACK
+  SUV
+  COUPE
+  CONVERTIBLE
+  WAGON
+}

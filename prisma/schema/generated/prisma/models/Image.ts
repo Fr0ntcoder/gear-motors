@@ -28,19 +28,19 @@ export type AggregateImage = {
 
 export type ImageAvgAggregateOutputType = {
   id: number | null
-  classifiedId: number | null
+  carId: number | null
 }
 
 export type ImageSumAggregateOutputType = {
   id: number | null
-  classifiedId: number | null
+  carId: number | null
 }
 
 export type ImageMinAggregateOutputType = {
   id: number | null
   alt: string | null
   src: string | null
-  classifiedId: number | null
+  carId: number | null
   blurhash: string | null
   isMain: boolean | null
 }
@@ -49,7 +49,7 @@ export type ImageMaxAggregateOutputType = {
   id: number | null
   alt: string | null
   src: string | null
-  classifiedId: number | null
+  carId: number | null
   blurhash: string | null
   isMain: boolean | null
 }
@@ -58,7 +58,7 @@ export type ImageCountAggregateOutputType = {
   id: number
   alt: number
   src: number
-  classifiedId: number
+  carId: number
   blurhash: number
   isMain: number
   _all: number
@@ -67,19 +67,19 @@ export type ImageCountAggregateOutputType = {
 
 export type ImageAvgAggregateInputType = {
   id?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
 }
 
 export type ImageSumAggregateInputType = {
   id?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
 }
 
 export type ImageMinAggregateInputType = {
   id?: true | runtime.Types.Skip
   alt?: true | runtime.Types.Skip
   src?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
   blurhash?: true | runtime.Types.Skip
   isMain?: true | runtime.Types.Skip
 }
@@ -88,7 +88,7 @@ export type ImageMaxAggregateInputType = {
   id?: true | runtime.Types.Skip
   alt?: true | runtime.Types.Skip
   src?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
   blurhash?: true | runtime.Types.Skip
   isMain?: true | runtime.Types.Skip
 }
@@ -97,7 +97,7 @@ export type ImageCountAggregateInputType = {
   id?: true | runtime.Types.Skip
   alt?: true | runtime.Types.Skip
   src?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
   blurhash?: true | runtime.Types.Skip
   isMain?: true | runtime.Types.Skip
   _all?: true | runtime.Types.Skip
@@ -193,7 +193,7 @@ export type ImageGroupByOutputType = {
   id: number
   alt: string
   src: string
-  classifiedId: number
+  carId: number
   blurhash: string
   isMain: boolean
   _count: ImageCountAggregateOutputType | null
@@ -225,20 +225,20 @@ export type ImageWhereInput = {
   id?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
   alt?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
   src?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
-  classifiedId?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
+  carId?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
   blurhash?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
   isMain?: Prisma.BoolFilter<"Image"> | boolean | runtime.Types.Skip
-  classified?: Prisma.XOR<Prisma.ClassifiedScalarRelationFilter, Prisma.ClassifiedWhereInput> | runtime.Types.Skip
+  car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput> | runtime.Types.Skip
 }
 
 export type ImageOrderByWithRelationInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
   alt?: Prisma.SortOrder | runtime.Types.Skip
   src?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   blurhash?: Prisma.SortOrder | runtime.Types.Skip
   isMain?: Prisma.SortOrder | runtime.Types.Skip
-  classified?: Prisma.ClassifiedOrderByWithRelationInput | runtime.Types.Skip
+  car?: Prisma.CarOrderByWithRelationInput | runtime.Types.Skip
 }
 
 export type ImageWhereUniqueInput = Prisma.AtLeast<{
@@ -248,17 +248,17 @@ export type ImageWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ImageWhereInput | Prisma.ImageWhereInput[] | runtime.Types.Skip
   alt?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
   src?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
-  classifiedId?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
+  carId?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
   blurhash?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
   isMain?: Prisma.BoolFilter<"Image"> | boolean | runtime.Types.Skip
-  classified?: Prisma.XOR<Prisma.ClassifiedScalarRelationFilter, Prisma.ClassifiedWhereInput> | runtime.Types.Skip
+  car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput> | runtime.Types.Skip
 }, "id">
 
 export type ImageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
   alt?: Prisma.SortOrder | runtime.Types.Skip
   src?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   blurhash?: Prisma.SortOrder | runtime.Types.Skip
   isMain?: Prisma.SortOrder | runtime.Types.Skip
   _count?: Prisma.ImageCountOrderByAggregateInput | runtime.Types.Skip
@@ -275,7 +275,7 @@ export type ImageScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Image"> | number | runtime.Types.Skip
   alt?: Prisma.StringWithAggregatesFilter<"Image"> | string | runtime.Types.Skip
   src?: Prisma.StringWithAggregatesFilter<"Image"> | string | runtime.Types.Skip
-  classifiedId?: Prisma.IntWithAggregatesFilter<"Image"> | number | runtime.Types.Skip
+  carId?: Prisma.IntWithAggregatesFilter<"Image"> | number | runtime.Types.Skip
   blurhash?: Prisma.StringWithAggregatesFilter<"Image"> | string | runtime.Types.Skip
   isMain?: Prisma.BoolWithAggregatesFilter<"Image"> | boolean | runtime.Types.Skip
 }
@@ -285,14 +285,14 @@ export type ImageCreateInput = {
   src: string
   blurhash: string
   isMain?: boolean | runtime.Types.Skip
-  classified: Prisma.ClassifiedCreateNestedOneWithoutImagesInput
+  car: Prisma.CarCreateNestedOneWithoutImagesInput
 }
 
 export type ImageUncheckedCreateInput = {
   id?: number | runtime.Types.Skip
   alt: string
   src: string
-  classifiedId: number
+  carId: number
   blurhash: string
   isMain?: boolean | runtime.Types.Skip
 }
@@ -302,14 +302,14 @@ export type ImageUpdateInput = {
   src?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   blurhash?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
-  classified?: Prisma.ClassifiedUpdateOneRequiredWithoutImagesNestedInput | runtime.Types.Skip
+  car?: Prisma.CarUpdateOneRequiredWithoutImagesNestedInput | runtime.Types.Skip
 }
 
 export type ImageUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   alt?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   src?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
-  classifiedId?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
+  carId?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   blurhash?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
 }
@@ -318,7 +318,7 @@ export type ImageCreateManyInput = {
   id?: number | runtime.Types.Skip
   alt: string
   src: string
-  classifiedId: number
+  carId: number
   blurhash: string
   isMain?: boolean | runtime.Types.Skip
 }
@@ -334,7 +334,7 @@ export type ImageUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   alt?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   src?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
-  classifiedId?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
+  carId?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   blurhash?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
 }
@@ -353,21 +353,21 @@ export type ImageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
   alt?: Prisma.SortOrder | runtime.Types.Skip
   src?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   blurhash?: Prisma.SortOrder | runtime.Types.Skip
   isMain?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type ImageAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type ImageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
   alt?: Prisma.SortOrder | runtime.Types.Skip
   src?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   blurhash?: Prisma.SortOrder | runtime.Types.Skip
   isMain?: Prisma.SortOrder | runtime.Types.Skip
 }
@@ -376,66 +376,66 @@ export type ImageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
   alt?: Prisma.SortOrder | runtime.Types.Skip
   src?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   blurhash?: Prisma.SortOrder | runtime.Types.Skip
   isMain?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type ImageSumOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
 }
 
-export type ImageCreateNestedManyWithoutClassifiedInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutClassifiedInput, Prisma.ImageUncheckedCreateWithoutClassifiedInput> | Prisma.ImageCreateWithoutClassifiedInput[] | Prisma.ImageUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutClassifiedInput | Prisma.ImageCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.ImageCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type ImageCreateNestedManyWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutCarInput, Prisma.ImageUncheckedCreateWithoutCarInput> | Prisma.ImageCreateWithoutCarInput[] | Prisma.ImageUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutCarInput | Prisma.ImageCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.ImageCreateManyCarInputEnvelope | runtime.Types.Skip
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
 }
 
-export type ImageUncheckedCreateNestedManyWithoutClassifiedInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutClassifiedInput, Prisma.ImageUncheckedCreateWithoutClassifiedInput> | Prisma.ImageCreateWithoutClassifiedInput[] | Prisma.ImageUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutClassifiedInput | Prisma.ImageCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.ImageCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type ImageUncheckedCreateNestedManyWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutCarInput, Prisma.ImageUncheckedCreateWithoutCarInput> | Prisma.ImageCreateWithoutCarInput[] | Prisma.ImageUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutCarInput | Prisma.ImageCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.ImageCreateManyCarInputEnvelope | runtime.Types.Skip
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
 }
 
-export type ImageUpdateManyWithoutClassifiedNestedInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutClassifiedInput, Prisma.ImageUncheckedCreateWithoutClassifiedInput> | Prisma.ImageCreateWithoutClassifiedInput[] | Prisma.ImageUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutClassifiedInput | Prisma.ImageCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutClassifiedInput | Prisma.ImageUpsertWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.ImageCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type ImageUpdateManyWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutCarInput, Prisma.ImageUncheckedCreateWithoutCarInput> | Prisma.ImageCreateWithoutCarInput[] | Prisma.ImageUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutCarInput | Prisma.ImageCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutCarInput | Prisma.ImageUpsertWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.ImageCreateManyCarInputEnvelope | runtime.Types.Skip
   set?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
   disconnect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
   delete?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
-  update?: Prisma.ImageUpdateWithWhereUniqueWithoutClassifiedInput | Prisma.ImageUpdateWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutClassifiedInput | Prisma.ImageUpdateManyWithWhereWithoutClassifiedInput[] | runtime.Types.Skip
+  update?: Prisma.ImageUpdateWithWhereUniqueWithoutCarInput | Prisma.ImageUpdateWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutCarInput | Prisma.ImageUpdateManyWithWhereWithoutCarInput[] | runtime.Types.Skip
   deleteMany?: Prisma.ImageScalarWhereInput | Prisma.ImageScalarWhereInput[] | runtime.Types.Skip
 }
 
-export type ImageUncheckedUpdateManyWithoutClassifiedNestedInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutClassifiedInput, Prisma.ImageUncheckedCreateWithoutClassifiedInput> | Prisma.ImageCreateWithoutClassifiedInput[] | Prisma.ImageUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutClassifiedInput | Prisma.ImageCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutClassifiedInput | Prisma.ImageUpsertWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.ImageCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type ImageUncheckedUpdateManyWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutCarInput, Prisma.ImageUncheckedCreateWithoutCarInput> | Prisma.ImageCreateWithoutCarInput[] | Prisma.ImageUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutCarInput | Prisma.ImageCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutCarInput | Prisma.ImageUpsertWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.ImageCreateManyCarInputEnvelope | runtime.Types.Skip
   set?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
   disconnect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
   delete?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[] | runtime.Types.Skip
-  update?: Prisma.ImageUpdateWithWhereUniqueWithoutClassifiedInput | Prisma.ImageUpdateWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutClassifiedInput | Prisma.ImageUpdateManyWithWhereWithoutClassifiedInput[] | runtime.Types.Skip
+  update?: Prisma.ImageUpdateWithWhereUniqueWithoutCarInput | Prisma.ImageUpdateWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutCarInput | Prisma.ImageUpdateManyWithWhereWithoutCarInput[] | runtime.Types.Skip
   deleteMany?: Prisma.ImageScalarWhereInput | Prisma.ImageScalarWhereInput[] | runtime.Types.Skip
 }
 
-export type ImageCreateWithoutClassifiedInput = {
+export type ImageCreateWithoutCarInput = {
   alt: string
   src: string
   blurhash: string
   isMain?: boolean | runtime.Types.Skip
 }
 
-export type ImageUncheckedCreateWithoutClassifiedInput = {
+export type ImageUncheckedCreateWithoutCarInput = {
   id?: number | runtime.Types.Skip
   alt: string
   src: string
@@ -443,30 +443,30 @@ export type ImageUncheckedCreateWithoutClassifiedInput = {
   isMain?: boolean | runtime.Types.Skip
 }
 
-export type ImageCreateOrConnectWithoutClassifiedInput = {
+export type ImageCreateOrConnectWithoutCarInput = {
   where: Prisma.ImageWhereUniqueInput
-  create: Prisma.XOR<Prisma.ImageCreateWithoutClassifiedInput, Prisma.ImageUncheckedCreateWithoutClassifiedInput>
+  create: Prisma.XOR<Prisma.ImageCreateWithoutCarInput, Prisma.ImageUncheckedCreateWithoutCarInput>
 }
 
-export type ImageCreateManyClassifiedInputEnvelope = {
-  data: Prisma.ImageCreateManyClassifiedInput | Prisma.ImageCreateManyClassifiedInput[]
+export type ImageCreateManyCarInputEnvelope = {
+  data: Prisma.ImageCreateManyCarInput | Prisma.ImageCreateManyCarInput[]
   skipDuplicates?: boolean | runtime.Types.Skip
 }
 
-export type ImageUpsertWithWhereUniqueWithoutClassifiedInput = {
+export type ImageUpsertWithWhereUniqueWithoutCarInput = {
   where: Prisma.ImageWhereUniqueInput
-  update: Prisma.XOR<Prisma.ImageUpdateWithoutClassifiedInput, Prisma.ImageUncheckedUpdateWithoutClassifiedInput>
-  create: Prisma.XOR<Prisma.ImageCreateWithoutClassifiedInput, Prisma.ImageUncheckedCreateWithoutClassifiedInput>
+  update: Prisma.XOR<Prisma.ImageUpdateWithoutCarInput, Prisma.ImageUncheckedUpdateWithoutCarInput>
+  create: Prisma.XOR<Prisma.ImageCreateWithoutCarInput, Prisma.ImageUncheckedCreateWithoutCarInput>
 }
 
-export type ImageUpdateWithWhereUniqueWithoutClassifiedInput = {
+export type ImageUpdateWithWhereUniqueWithoutCarInput = {
   where: Prisma.ImageWhereUniqueInput
-  data: Prisma.XOR<Prisma.ImageUpdateWithoutClassifiedInput, Prisma.ImageUncheckedUpdateWithoutClassifiedInput>
+  data: Prisma.XOR<Prisma.ImageUpdateWithoutCarInput, Prisma.ImageUncheckedUpdateWithoutCarInput>
 }
 
-export type ImageUpdateManyWithWhereWithoutClassifiedInput = {
+export type ImageUpdateManyWithWhereWithoutCarInput = {
   where: Prisma.ImageScalarWhereInput
-  data: Prisma.XOR<Prisma.ImageUpdateManyMutationInput, Prisma.ImageUncheckedUpdateManyWithoutClassifiedInput>
+  data: Prisma.XOR<Prisma.ImageUpdateManyMutationInput, Prisma.ImageUncheckedUpdateManyWithoutCarInput>
 }
 
 export type ImageScalarWhereInput = {
@@ -476,12 +476,12 @@ export type ImageScalarWhereInput = {
   id?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
   alt?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
   src?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
-  classifiedId?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
+  carId?: Prisma.IntFilter<"Image"> | number | runtime.Types.Skip
   blurhash?: Prisma.StringFilter<"Image"> | string | runtime.Types.Skip
   isMain?: Prisma.BoolFilter<"Image"> | boolean | runtime.Types.Skip
 }
 
-export type ImageCreateManyClassifiedInput = {
+export type ImageCreateManyCarInput = {
   id?: number | runtime.Types.Skip
   alt: string
   src: string
@@ -489,14 +489,14 @@ export type ImageCreateManyClassifiedInput = {
   isMain?: boolean | runtime.Types.Skip
 }
 
-export type ImageUpdateWithoutClassifiedInput = {
+export type ImageUpdateWithoutCarInput = {
   alt?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   src?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   blurhash?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
 }
 
-export type ImageUncheckedUpdateWithoutClassifiedInput = {
+export type ImageUncheckedUpdateWithoutCarInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   alt?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   src?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
@@ -504,7 +504,7 @@ export type ImageUncheckedUpdateWithoutClassifiedInput = {
   isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
 }
 
-export type ImageUncheckedUpdateManyWithoutClassifiedInput = {
+export type ImageUncheckedUpdateManyWithoutCarInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   alt?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   src?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
@@ -518,62 +518,62 @@ export type ImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean | runtime.Types.Skip
   alt?: boolean | runtime.Types.Skip
   src?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   blurhash?: boolean | runtime.Types.Skip
   isMain?: boolean | runtime.Types.Skip
-  classified?: boolean | Prisma.ClassifiedDefaultArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["image"]>
 
 export type ImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean | runtime.Types.Skip
   alt?: boolean | runtime.Types.Skip
   src?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   blurhash?: boolean | runtime.Types.Skip
   isMain?: boolean | runtime.Types.Skip
-  classified?: boolean | Prisma.ClassifiedDefaultArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["image"]>
 
 export type ImageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean | runtime.Types.Skip
   alt?: boolean | runtime.Types.Skip
   src?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   blurhash?: boolean | runtime.Types.Skip
   isMain?: boolean | runtime.Types.Skip
-  classified?: boolean | Prisma.ClassifiedDefaultArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["image"]>
 
 export type ImageSelectScalar = {
   id?: boolean | runtime.Types.Skip
   alt?: boolean | runtime.Types.Skip
   src?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   blurhash?: boolean | runtime.Types.Skip
   isMain?: boolean | runtime.Types.Skip
 }
 
-export type ImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "alt" | "src" | "classifiedId" | "blurhash" | "isMain", ExtArgs["result"]["image"], runtime.Types.Skip>
+export type ImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "alt" | "src" | "carId" | "blurhash" | "isMain", ExtArgs["result"]["image"], runtime.Types.Skip>
 export type ImageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classified?: boolean | Prisma.ClassifiedDefaultArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs> | runtime.Types.Skip
 }
 export type ImageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classified?: boolean | Prisma.ClassifiedDefaultArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs> | runtime.Types.Skip
 }
 export type ImageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classified?: boolean | Prisma.ClassifiedDefaultArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs> | runtime.Types.Skip
 }
 
 export type $ImagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Image"
   objects: {
-    classified: Prisma.$ClassifiedPayload<ExtArgs>
+    car: Prisma.$CarPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     alt: string
     src: string
-    classifiedId: number
+    carId: number
     blurhash: string
     isMain: boolean
   }, ExtArgs["result"]["image"]>
@@ -970,7 +970,7 @@ readonly fields: ImageFieldRefs;
  */
 export interface Prisma__ImageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  classified<T extends Prisma.ClassifiedDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClassifiedDefaultArgs<ExtArgs>>): Prisma.Prisma__ClassifiedClient<runtime.Types.Result.GetResult<Prisma.$ClassifiedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  car<T extends Prisma.CarDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CarDefaultArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1003,7 +1003,7 @@ export interface ImageFieldRefs {
   readonly id: Prisma.FieldRef<"Image", 'Int'>
   readonly alt: Prisma.FieldRef<"Image", 'String'>
   readonly src: Prisma.FieldRef<"Image", 'String'>
-  readonly classifiedId: Prisma.FieldRef<"Image", 'Int'>
+  readonly carId: Prisma.FieldRef<"Image", 'Int'>
   readonly blurhash: Prisma.FieldRef<"Image", 'String'>
   readonly isMain: Prisma.FieldRef<"Image", 'Boolean'>
 }

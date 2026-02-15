@@ -28,12 +28,12 @@ export type AggregateCustomer = {
 
 export type CustomerAvgAggregateOutputType = {
   id: number | null
-  classifiedId: number | null
+  carId: number | null
 }
 
 export type CustomerSumAggregateOutputType = {
   id: number | null
-  classifiedId: number | null
+  carId: number | null
 }
 
 export type CustomerMinAggregateOutputType = {
@@ -45,7 +45,7 @@ export type CustomerMinAggregateOutputType = {
   bookingDate: Date | null
   termsAccepted: boolean | null
   status: $Enums.CustomerStatus | null
-  classifiedId: number | null
+  carId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,7 +59,7 @@ export type CustomerMaxAggregateOutputType = {
   bookingDate: Date | null
   termsAccepted: boolean | null
   status: $Enums.CustomerStatus | null
-  classifiedId: number | null
+  carId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -73,7 +73,7 @@ export type CustomerCountAggregateOutputType = {
   bookingDate: number
   termsAccepted: number
   status: number
-  classifiedId: number
+  carId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -82,12 +82,12 @@ export type CustomerCountAggregateOutputType = {
 
 export type CustomerAvgAggregateInputType = {
   id?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
 }
 
 export type CustomerSumAggregateInputType = {
   id?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
 }
 
 export type CustomerMinAggregateInputType = {
@@ -99,7 +99,7 @@ export type CustomerMinAggregateInputType = {
   bookingDate?: true | runtime.Types.Skip
   termsAccepted?: true | runtime.Types.Skip
   status?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
   createdAt?: true | runtime.Types.Skip
   updatedAt?: true | runtime.Types.Skip
 }
@@ -113,7 +113,7 @@ export type CustomerMaxAggregateInputType = {
   bookingDate?: true | runtime.Types.Skip
   termsAccepted?: true | runtime.Types.Skip
   status?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
   createdAt?: true | runtime.Types.Skip
   updatedAt?: true | runtime.Types.Skip
 }
@@ -127,7 +127,7 @@ export type CustomerCountAggregateInputType = {
   bookingDate?: true | runtime.Types.Skip
   termsAccepted?: true | runtime.Types.Skip
   status?: true | runtime.Types.Skip
-  classifiedId?: true | runtime.Types.Skip
+  carId?: true | runtime.Types.Skip
   createdAt?: true | runtime.Types.Skip
   updatedAt?: true | runtime.Types.Skip
   _all?: true | runtime.Types.Skip
@@ -228,7 +228,7 @@ export type CustomerGroupByOutputType = {
   bookingDate: Date | null
   termsAccepted: boolean
   status: $Enums.CustomerStatus
-  classifiedId: number | null
+  carId: number | null
   createdAt: Date
   updatedAt: Date
   _count: CustomerCountAggregateOutputType | null
@@ -265,10 +265,10 @@ export type CustomerWhereInput = {
   bookingDate?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolFilter<"Customer"> | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusFilter<"Customer"> | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.IntNullableFilter<"Customer"> | number | null | runtime.Types.Skip
+  carId?: Prisma.IntNullableFilter<"Customer"> | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string | runtime.Types.Skip
-  classified?: Prisma.XOR<Prisma.ClassifiedNullableScalarRelationFilter, Prisma.ClassifiedWhereInput> | null | runtime.Types.Skip
+  car?: Prisma.XOR<Prisma.CarNullableScalarRelationFilter, Prisma.CarWhereInput> | null | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleListRelationFilter | runtime.Types.Skip
 }
 
@@ -281,10 +281,10 @@ export type CustomerOrderByWithRelationInput = {
   bookingDate?: Prisma.SortOrderInput | Prisma.SortOrder | runtime.Types.Skip
   termsAccepted?: Prisma.SortOrder | runtime.Types.Skip
   status?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrderInput | Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrderInput | Prisma.SortOrder | runtime.Types.Skip
   createdAt?: Prisma.SortOrder | runtime.Types.Skip
   updatedAt?: Prisma.SortOrder | runtime.Types.Skip
-  classified?: Prisma.ClassifiedOrderByWithRelationInput | runtime.Types.Skip
+  car?: Prisma.CarOrderByWithRelationInput | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleOrderByRelationAggregateInput | runtime.Types.Skip
 }
 
@@ -300,10 +300,10 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   bookingDate?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolFilter<"Customer"> | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusFilter<"Customer"> | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.IntNullableFilter<"Customer"> | number | null | runtime.Types.Skip
+  carId?: Prisma.IntNullableFilter<"Customer"> | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string | runtime.Types.Skip
-  classified?: Prisma.XOR<Prisma.ClassifiedNullableScalarRelationFilter, Prisma.ClassifiedWhereInput> | null | runtime.Types.Skip
+  car?: Prisma.XOR<Prisma.CarNullableScalarRelationFilter, Prisma.CarWhereInput> | null | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleListRelationFilter | runtime.Types.Skip
 }, "id">
 
@@ -316,7 +316,7 @@ export type CustomerOrderByWithAggregationInput = {
   bookingDate?: Prisma.SortOrderInput | Prisma.SortOrder | runtime.Types.Skip
   termsAccepted?: Prisma.SortOrder | runtime.Types.Skip
   status?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrderInput | Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrderInput | Prisma.SortOrder | runtime.Types.Skip
   createdAt?: Prisma.SortOrder | runtime.Types.Skip
   updatedAt?: Prisma.SortOrder | runtime.Types.Skip
   _count?: Prisma.CustomerCountOrderByAggregateInput | runtime.Types.Skip
@@ -338,7 +338,7 @@ export type CustomerScalarWhereWithAggregatesInput = {
   bookingDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Customer"> | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolWithAggregatesFilter<"Customer"> | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusWithAggregatesFilter<"Customer"> | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.IntNullableWithAggregatesFilter<"Customer"> | number | null | runtime.Types.Skip
+  carId?: Prisma.IntNullableWithAggregatesFilter<"Customer"> | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Customer"> | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Customer"> | Date | string | runtime.Types.Skip
 }
@@ -353,7 +353,7 @@ export type CustomerCreateInput = {
   status?: $Enums.CustomerStatus | runtime.Types.Skip
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
-  classified?: Prisma.ClassifiedCreateNestedOneWithoutCustomersInput | runtime.Types.Skip
+  car?: Prisma.CarCreateNestedOneWithoutCustomersInput | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleCreateNestedManyWithoutCustomerInput | runtime.Types.Skip
 }
 
@@ -366,7 +366,7 @@ export type CustomerUncheckedCreateInput = {
   bookingDate?: Date | string | null | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: number | null | runtime.Types.Skip
+  carId?: number | null | runtime.Types.Skip
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleUncheckedCreateNestedManyWithoutCustomerInput | runtime.Types.Skip
@@ -382,7 +382,7 @@ export type CustomerUpdateInput = {
   status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
-  classified?: Prisma.ClassifiedUpdateOneWithoutCustomersNestedInput | runtime.Types.Skip
+  car?: Prisma.CarUpdateOneWithoutCustomersNestedInput | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleUpdateManyWithoutCustomerNestedInput | runtime.Types.Skip
 }
 
@@ -395,7 +395,7 @@ export type CustomerUncheckedUpdateInput = {
   bookingDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null | runtime.Types.Skip
+  carId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   lifecycle?: Prisma.CustomerLifecycleUncheckedUpdateManyWithoutCustomerNestedInput | runtime.Types.Skip
@@ -410,7 +410,7 @@ export type CustomerCreateManyInput = {
   bookingDate?: Date | string | null | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: number | null | runtime.Types.Skip
+  carId?: number | null | runtime.Types.Skip
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
 }
@@ -436,7 +436,7 @@ export type CustomerUncheckedUpdateManyInput = {
   bookingDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null | runtime.Types.Skip
+  carId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
 }
@@ -460,14 +460,14 @@ export type CustomerCountOrderByAggregateInput = {
   bookingDate?: Prisma.SortOrder | runtime.Types.Skip
   termsAccepted?: Prisma.SortOrder | runtime.Types.Skip
   status?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   createdAt?: Prisma.SortOrder | runtime.Types.Skip
   updatedAt?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type CustomerAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type CustomerMaxOrderByAggregateInput = {
@@ -479,7 +479,7 @@ export type CustomerMaxOrderByAggregateInput = {
   bookingDate?: Prisma.SortOrder | runtime.Types.Skip
   termsAccepted?: Prisma.SortOrder | runtime.Types.Skip
   status?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   createdAt?: Prisma.SortOrder | runtime.Types.Skip
   updatedAt?: Prisma.SortOrder | runtime.Types.Skip
 }
@@ -493,14 +493,14 @@ export type CustomerMinOrderByAggregateInput = {
   bookingDate?: Prisma.SortOrder | runtime.Types.Skip
   termsAccepted?: Prisma.SortOrder | runtime.Types.Skip
   status?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
   createdAt?: Prisma.SortOrder | runtime.Types.Skip
   updatedAt?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type CustomerSumOrderByAggregateInput = {
   id?: Prisma.SortOrder | runtime.Types.Skip
-  classifiedId?: Prisma.SortOrder | runtime.Types.Skip
+  carId?: Prisma.SortOrder | runtime.Types.Skip
 }
 
 export type CustomerScalarRelationFilter = {
@@ -508,45 +508,45 @@ export type CustomerScalarRelationFilter = {
   isNot?: Prisma.CustomerWhereInput | runtime.Types.Skip
 }
 
-export type CustomerCreateNestedManyWithoutClassifiedInput = {
-  create?: Prisma.XOR<Prisma.CustomerCreateWithoutClassifiedInput, Prisma.CustomerUncheckedCreateWithoutClassifiedInput> | Prisma.CustomerCreateWithoutClassifiedInput[] | Prisma.CustomerUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutClassifiedInput | Prisma.CustomerCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.CustomerCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type CustomerCreateNestedManyWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutCarInput, Prisma.CustomerUncheckedCreateWithoutCarInput> | Prisma.CustomerCreateWithoutCarInput[] | Prisma.CustomerUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutCarInput | Prisma.CustomerCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.CustomerCreateManyCarInputEnvelope | runtime.Types.Skip
   connect?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
 }
 
-export type CustomerUncheckedCreateNestedManyWithoutClassifiedInput = {
-  create?: Prisma.XOR<Prisma.CustomerCreateWithoutClassifiedInput, Prisma.CustomerUncheckedCreateWithoutClassifiedInput> | Prisma.CustomerCreateWithoutClassifiedInput[] | Prisma.CustomerUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutClassifiedInput | Prisma.CustomerCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.CustomerCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type CustomerUncheckedCreateNestedManyWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutCarInput, Prisma.CustomerUncheckedCreateWithoutCarInput> | Prisma.CustomerCreateWithoutCarInput[] | Prisma.CustomerUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutCarInput | Prisma.CustomerCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.CustomerCreateManyCarInputEnvelope | runtime.Types.Skip
   connect?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
 }
 
-export type CustomerUpdateManyWithoutClassifiedNestedInput = {
-  create?: Prisma.XOR<Prisma.CustomerCreateWithoutClassifiedInput, Prisma.CustomerUncheckedCreateWithoutClassifiedInput> | Prisma.CustomerCreateWithoutClassifiedInput[] | Prisma.CustomerUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutClassifiedInput | Prisma.CustomerCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  upsert?: Prisma.CustomerUpsertWithWhereUniqueWithoutClassifiedInput | Prisma.CustomerUpsertWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.CustomerCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type CustomerUpdateManyWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutCarInput, Prisma.CustomerUncheckedCreateWithoutCarInput> | Prisma.CustomerCreateWithoutCarInput[] | Prisma.CustomerUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutCarInput | Prisma.CustomerCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  upsert?: Prisma.CustomerUpsertWithWhereUniqueWithoutCarInput | Prisma.CustomerUpsertWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.CustomerCreateManyCarInputEnvelope | runtime.Types.Skip
   set?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
   disconnect?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
   delete?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
   connect?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
-  update?: Prisma.CustomerUpdateWithWhereUniqueWithoutClassifiedInput | Prisma.CustomerUpdateWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  updateMany?: Prisma.CustomerUpdateManyWithWhereWithoutClassifiedInput | Prisma.CustomerUpdateManyWithWhereWithoutClassifiedInput[] | runtime.Types.Skip
+  update?: Prisma.CustomerUpdateWithWhereUniqueWithoutCarInput | Prisma.CustomerUpdateWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  updateMany?: Prisma.CustomerUpdateManyWithWhereWithoutCarInput | Prisma.CustomerUpdateManyWithWhereWithoutCarInput[] | runtime.Types.Skip
   deleteMany?: Prisma.CustomerScalarWhereInput | Prisma.CustomerScalarWhereInput[] | runtime.Types.Skip
 }
 
-export type CustomerUncheckedUpdateManyWithoutClassifiedNestedInput = {
-  create?: Prisma.XOR<Prisma.CustomerCreateWithoutClassifiedInput, Prisma.CustomerUncheckedCreateWithoutClassifiedInput> | Prisma.CustomerCreateWithoutClassifiedInput[] | Prisma.CustomerUncheckedCreateWithoutClassifiedInput[] | runtime.Types.Skip
-  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutClassifiedInput | Prisma.CustomerCreateOrConnectWithoutClassifiedInput[] | runtime.Types.Skip
-  upsert?: Prisma.CustomerUpsertWithWhereUniqueWithoutClassifiedInput | Prisma.CustomerUpsertWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  createMany?: Prisma.CustomerCreateManyClassifiedInputEnvelope | runtime.Types.Skip
+export type CustomerUncheckedUpdateManyWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutCarInput, Prisma.CustomerUncheckedCreateWithoutCarInput> | Prisma.CustomerCreateWithoutCarInput[] | Prisma.CustomerUncheckedCreateWithoutCarInput[] | runtime.Types.Skip
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutCarInput | Prisma.CustomerCreateOrConnectWithoutCarInput[] | runtime.Types.Skip
+  upsert?: Prisma.CustomerUpsertWithWhereUniqueWithoutCarInput | Prisma.CustomerUpsertWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  createMany?: Prisma.CustomerCreateManyCarInputEnvelope | runtime.Types.Skip
   set?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
   disconnect?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
   delete?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
   connect?: Prisma.CustomerWhereUniqueInput | Prisma.CustomerWhereUniqueInput[] | runtime.Types.Skip
-  update?: Prisma.CustomerUpdateWithWhereUniqueWithoutClassifiedInput | Prisma.CustomerUpdateWithWhereUniqueWithoutClassifiedInput[] | runtime.Types.Skip
-  updateMany?: Prisma.CustomerUpdateManyWithWhereWithoutClassifiedInput | Prisma.CustomerUpdateManyWithWhereWithoutClassifiedInput[] | runtime.Types.Skip
+  update?: Prisma.CustomerUpdateWithWhereUniqueWithoutCarInput | Prisma.CustomerUpdateWithWhereUniqueWithoutCarInput[] | runtime.Types.Skip
+  updateMany?: Prisma.CustomerUpdateManyWithWhereWithoutCarInput | Prisma.CustomerUpdateManyWithWhereWithoutCarInput[] | runtime.Types.Skip
   deleteMany?: Prisma.CustomerScalarWhereInput | Prisma.CustomerScalarWhereInput[] | runtime.Types.Skip
 }
 
@@ -560,14 +560,6 @@ export type BoolFieldUpdateOperationsInput = {
 
 export type EnumCustomerStatusFieldUpdateOperationsInput = {
   set?: $Enums.CustomerStatus | runtime.Types.Skip
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null | runtime.Types.Skip
-  increment?: number | runtime.Types.Skip
-  decrement?: number | runtime.Types.Skip
-  multiply?: number | runtime.Types.Skip
-  divide?: number | runtime.Types.Skip
 }
 
 export type CustomerCreateNestedOneWithoutLifecycleInput = {
@@ -584,7 +576,7 @@ export type CustomerUpdateOneRequiredWithoutLifecycleNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerUpdateToOneWithWhereWithoutLifecycleInput, Prisma.CustomerUpdateWithoutLifecycleInput>, Prisma.CustomerUncheckedUpdateWithoutLifecycleInput> | runtime.Types.Skip
 }
 
-export type CustomerCreateWithoutClassifiedInput = {
+export type CustomerCreateWithoutCarInput = {
   firstName: string
   lastName: string
   email: string
@@ -597,7 +589,7 @@ export type CustomerCreateWithoutClassifiedInput = {
   lifecycle?: Prisma.CustomerLifecycleCreateNestedManyWithoutCustomerInput | runtime.Types.Skip
 }
 
-export type CustomerUncheckedCreateWithoutClassifiedInput = {
+export type CustomerUncheckedCreateWithoutCarInput = {
   id?: number | runtime.Types.Skip
   firstName: string
   lastName: string
@@ -611,30 +603,30 @@ export type CustomerUncheckedCreateWithoutClassifiedInput = {
   lifecycle?: Prisma.CustomerLifecycleUncheckedCreateNestedManyWithoutCustomerInput | runtime.Types.Skip
 }
 
-export type CustomerCreateOrConnectWithoutClassifiedInput = {
+export type CustomerCreateOrConnectWithoutCarInput = {
   where: Prisma.CustomerWhereUniqueInput
-  create: Prisma.XOR<Prisma.CustomerCreateWithoutClassifiedInput, Prisma.CustomerUncheckedCreateWithoutClassifiedInput>
+  create: Prisma.XOR<Prisma.CustomerCreateWithoutCarInput, Prisma.CustomerUncheckedCreateWithoutCarInput>
 }
 
-export type CustomerCreateManyClassifiedInputEnvelope = {
-  data: Prisma.CustomerCreateManyClassifiedInput | Prisma.CustomerCreateManyClassifiedInput[]
+export type CustomerCreateManyCarInputEnvelope = {
+  data: Prisma.CustomerCreateManyCarInput | Prisma.CustomerCreateManyCarInput[]
   skipDuplicates?: boolean | runtime.Types.Skip
 }
 
-export type CustomerUpsertWithWhereUniqueWithoutClassifiedInput = {
+export type CustomerUpsertWithWhereUniqueWithoutCarInput = {
   where: Prisma.CustomerWhereUniqueInput
-  update: Prisma.XOR<Prisma.CustomerUpdateWithoutClassifiedInput, Prisma.CustomerUncheckedUpdateWithoutClassifiedInput>
-  create: Prisma.XOR<Prisma.CustomerCreateWithoutClassifiedInput, Prisma.CustomerUncheckedCreateWithoutClassifiedInput>
+  update: Prisma.XOR<Prisma.CustomerUpdateWithoutCarInput, Prisma.CustomerUncheckedUpdateWithoutCarInput>
+  create: Prisma.XOR<Prisma.CustomerCreateWithoutCarInput, Prisma.CustomerUncheckedCreateWithoutCarInput>
 }
 
-export type CustomerUpdateWithWhereUniqueWithoutClassifiedInput = {
+export type CustomerUpdateWithWhereUniqueWithoutCarInput = {
   where: Prisma.CustomerWhereUniqueInput
-  data: Prisma.XOR<Prisma.CustomerUpdateWithoutClassifiedInput, Prisma.CustomerUncheckedUpdateWithoutClassifiedInput>
+  data: Prisma.XOR<Prisma.CustomerUpdateWithoutCarInput, Prisma.CustomerUncheckedUpdateWithoutCarInput>
 }
 
-export type CustomerUpdateManyWithWhereWithoutClassifiedInput = {
+export type CustomerUpdateManyWithWhereWithoutCarInput = {
   where: Prisma.CustomerScalarWhereInput
-  data: Prisma.XOR<Prisma.CustomerUpdateManyMutationInput, Prisma.CustomerUncheckedUpdateManyWithoutClassifiedInput>
+  data: Prisma.XOR<Prisma.CustomerUpdateManyMutationInput, Prisma.CustomerUncheckedUpdateManyWithoutCarInput>
 }
 
 export type CustomerScalarWhereInput = {
@@ -649,7 +641,7 @@ export type CustomerScalarWhereInput = {
   bookingDate?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolFilter<"Customer"> | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusFilter<"Customer"> | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.IntNullableFilter<"Customer"> | number | null | runtime.Types.Skip
+  carId?: Prisma.IntNullableFilter<"Customer"> | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string | runtime.Types.Skip
 }
@@ -664,7 +656,7 @@ export type CustomerCreateWithoutLifecycleInput = {
   status?: $Enums.CustomerStatus | runtime.Types.Skip
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
-  classified?: Prisma.ClassifiedCreateNestedOneWithoutCustomersInput | runtime.Types.Skip
+  car?: Prisma.CarCreateNestedOneWithoutCustomersInput | runtime.Types.Skip
 }
 
 export type CustomerUncheckedCreateWithoutLifecycleInput = {
@@ -676,7 +668,7 @@ export type CustomerUncheckedCreateWithoutLifecycleInput = {
   bookingDate?: Date | string | null | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: number | null | runtime.Types.Skip
+  carId?: number | null | runtime.Types.Skip
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
 }
@@ -707,7 +699,7 @@ export type CustomerUpdateWithoutLifecycleInput = {
   status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
-  classified?: Prisma.ClassifiedUpdateOneWithoutCustomersNestedInput | runtime.Types.Skip
+  car?: Prisma.CarUpdateOneWithoutCustomersNestedInput | runtime.Types.Skip
 }
 
 export type CustomerUncheckedUpdateWithoutLifecycleInput = {
@@ -719,12 +711,12 @@ export type CustomerUncheckedUpdateWithoutLifecycleInput = {
   bookingDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null | runtime.Types.Skip
   termsAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean | runtime.Types.Skip
   status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus | runtime.Types.Skip
-  classifiedId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null | runtime.Types.Skip
+  carId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
 }
 
-export type CustomerCreateManyClassifiedInput = {
+export type CustomerCreateManyCarInput = {
   id?: number | runtime.Types.Skip
   firstName: string
   lastName: string
@@ -737,7 +729,7 @@ export type CustomerCreateManyClassifiedInput = {
   updatedAt?: Date | string | runtime.Types.Skip
 }
 
-export type CustomerUpdateWithoutClassifiedInput = {
+export type CustomerUpdateWithoutCarInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   lastName?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   email?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
@@ -750,7 +742,7 @@ export type CustomerUpdateWithoutClassifiedInput = {
   lifecycle?: Prisma.CustomerLifecycleUpdateManyWithoutCustomerNestedInput | runtime.Types.Skip
 }
 
-export type CustomerUncheckedUpdateWithoutClassifiedInput = {
+export type CustomerUncheckedUpdateWithoutCarInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   firstName?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   lastName?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
@@ -764,7 +756,7 @@ export type CustomerUncheckedUpdateWithoutClassifiedInput = {
   lifecycle?: Prisma.CustomerLifecycleUncheckedUpdateManyWithoutCustomerNestedInput | runtime.Types.Skip
 }
 
-export type CustomerUncheckedUpdateManyWithoutClassifiedInput = {
+export type CustomerUncheckedUpdateManyWithoutCarInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   firstName?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   lastName?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
@@ -817,10 +809,10 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   bookingDate?: boolean | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   createdAt?: boolean | runtime.Types.Skip
   updatedAt?: boolean | runtime.Types.Skip
-  classified?: boolean | Prisma.Customer$classifiedArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.Customer$carArgs<ExtArgs> | runtime.Types.Skip
   lifecycle?: boolean | Prisma.Customer$lifecycleArgs<ExtArgs> | runtime.Types.Skip
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["customer"]>
@@ -834,10 +826,10 @@ export type CustomerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   bookingDate?: boolean | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   createdAt?: boolean | runtime.Types.Skip
   updatedAt?: boolean | runtime.Types.Skip
-  classified?: boolean | Prisma.Customer$classifiedArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.Customer$carArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -849,10 +841,10 @@ export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   bookingDate?: boolean | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   createdAt?: boolean | runtime.Types.Skip
   updatedAt?: boolean | runtime.Types.Skip
-  classified?: boolean | Prisma.Customer$classifiedArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.Customer$carArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectScalar = {
@@ -864,28 +856,28 @@ export type CustomerSelectScalar = {
   bookingDate?: boolean | runtime.Types.Skip
   termsAccepted?: boolean | runtime.Types.Skip
   status?: boolean | runtime.Types.Skip
-  classifiedId?: boolean | runtime.Types.Skip
+  carId?: boolean | runtime.Types.Skip
   createdAt?: boolean | runtime.Types.Skip
   updatedAt?: boolean | runtime.Types.Skip
 }
 
-export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "mobile" | "bookingDate" | "termsAccepted" | "status" | "classifiedId" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"], runtime.Types.Skip>
+export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "mobile" | "bookingDate" | "termsAccepted" | "status" | "carId" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"], runtime.Types.Skip>
 export type CustomerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classified?: boolean | Prisma.Customer$classifiedArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.Customer$carArgs<ExtArgs> | runtime.Types.Skip
   lifecycle?: boolean | Prisma.Customer$lifecycleArgs<ExtArgs> | runtime.Types.Skip
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs> | runtime.Types.Skip
 }
 export type CustomerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classified?: boolean | Prisma.Customer$classifiedArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.Customer$carArgs<ExtArgs> | runtime.Types.Skip
 }
 export type CustomerIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classified?: boolean | Prisma.Customer$classifiedArgs<ExtArgs> | runtime.Types.Skip
+  car?: boolean | Prisma.Customer$carArgs<ExtArgs> | runtime.Types.Skip
 }
 
 export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Customer"
   objects: {
-    classified: Prisma.$ClassifiedPayload<ExtArgs> | null
+    car: Prisma.$CarPayload<ExtArgs> | null
     lifecycle: Prisma.$CustomerLifecyclePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -897,7 +889,7 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     bookingDate: Date | null
     termsAccepted: boolean
     status: $Enums.CustomerStatus
-    classifiedId: number | null
+    carId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["customer"]>
@@ -1294,7 +1286,7 @@ readonly fields: CustomerFieldRefs;
  */
 export interface Prisma__CustomerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  classified<T extends Prisma.Customer$classifiedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$classifiedArgs<ExtArgs>>): Prisma.Prisma__ClassifiedClient<runtime.Types.Result.GetResult<Prisma.$ClassifiedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  car<T extends Prisma.Customer$carArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$carArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   lifecycle<T extends Prisma.Customer$lifecycleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$lifecycleArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerLifecyclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1333,7 +1325,7 @@ export interface CustomerFieldRefs {
   readonly bookingDate: Prisma.FieldRef<"Customer", 'DateTime'>
   readonly termsAccepted: Prisma.FieldRef<"Customer", 'Boolean'>
   readonly status: Prisma.FieldRef<"Customer", 'CustomerStatus'>
-  readonly classifiedId: Prisma.FieldRef<"Customer", 'Int'>
+  readonly carId: Prisma.FieldRef<"Customer", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Customer", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Customer", 'DateTime'>
 }
@@ -1732,22 +1724,22 @@ export type CustomerDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Customer.classified
+ * Customer.car
  */
-export type Customer$classifiedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Customer$carArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Classified
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.ClassifiedSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Classified
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.ClassifiedOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ClassifiedInclude<ExtArgs> | null
-  where?: Prisma.ClassifiedWhereInput | runtime.Types.Skip
+  include?: Prisma.CarInclude<ExtArgs> | null
+  where?: Prisma.CarWhereInput | runtime.Types.Skip
 }
 
 /**

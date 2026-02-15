@@ -9,13 +9,13 @@
 * 🟢 You can import this file directly.
 */
 
-export const ClassifiedStatus = {
+export const CarStatus = {
   LIVE: 'LIVE',
   DRAFT: 'DRAFT',
   SOLD: 'SOLD'
 } as const
 
-export type ClassifiedStatus = (typeof ClassifiedStatus)[keyof typeof ClassifiedStatus]
+export type CarStatus = (typeof CarStatus)[keyof typeof CarStatus]
 
 
 export const Currency = {

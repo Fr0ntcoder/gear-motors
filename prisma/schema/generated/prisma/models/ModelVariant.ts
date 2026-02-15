@@ -245,7 +245,7 @@ export type ModelVariantWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"ModelVariant"> | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFilter<"ModelVariant"> | Date | string | runtime.Types.Skip
   model?: Prisma.XOR<Prisma.ModelScalarRelationFilter, Prisma.ModelWhereInput> | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedListRelationFilter | runtime.Types.Skip
+  cars?: Prisma.CarListRelationFilter | runtime.Types.Skip
 }
 
 export type ModelVariantOrderByWithRelationInput = {
@@ -257,7 +257,7 @@ export type ModelVariantOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder | runtime.Types.Skip
   updatedAt?: Prisma.SortOrder | runtime.Types.Skip
   model?: Prisma.ModelOrderByWithRelationInput | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedOrderByRelationAggregateInput | runtime.Types.Skip
+  cars?: Prisma.CarOrderByRelationAggregateInput | runtime.Types.Skip
 }
 
 export type ModelVariantWhereUniqueInput = Prisma.AtLeast<{
@@ -273,7 +273,7 @@ export type ModelVariantWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"ModelVariant"> | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFilter<"ModelVariant"> | Date | string | runtime.Types.Skip
   model?: Prisma.XOR<Prisma.ModelScalarRelationFilter, Prisma.ModelWhereInput> | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedListRelationFilter | runtime.Types.Skip
+  cars?: Prisma.CarListRelationFilter | runtime.Types.Skip
 }, "id" | "modelId_name">
 
 export type ModelVariantOrderByWithAggregationInput = {
@@ -311,7 +311,7 @@ export type ModelVariantCreateInput = {
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
   model: Prisma.ModelCreateNestedOneWithoutModelVariantsInput
-  classifieds?: Prisma.ClassifiedCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
+  cars?: Prisma.CarCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
 }
 
 export type ModelVariantUncheckedCreateInput = {
@@ -322,7 +322,7 @@ export type ModelVariantUncheckedCreateInput = {
   modelId: number
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedUncheckedCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
 }
 
 export type ModelVariantUpdateInput = {
@@ -332,7 +332,7 @@ export type ModelVariantUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   model?: Prisma.ModelUpdateOneRequiredWithoutModelVariantsNestedInput | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
+  cars?: Prisma.CarUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
 }
 
 export type ModelVariantUncheckedUpdateInput = {
@@ -343,7 +343,7 @@ export type ModelVariantUncheckedUpdateInput = {
   modelId?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedUncheckedUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
+  cars?: Prisma.CarUncheckedUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
 }
 
 export type ModelVariantCreateManyInput = {
@@ -438,20 +438,20 @@ export type ModelVariantSumOrderByAggregateInput = {
   modelId?: Prisma.SortOrder | runtime.Types.Skip
 }
 
-export type ModelVariantCreateNestedOneWithoutClassifiedsInput = {
-  create?: Prisma.XOR<Prisma.ModelVariantCreateWithoutClassifiedsInput, Prisma.ModelVariantUncheckedCreateWithoutClassifiedsInput> | runtime.Types.Skip
-  connectOrCreate?: Prisma.ModelVariantCreateOrConnectWithoutClassifiedsInput | runtime.Types.Skip
+export type ModelVariantCreateNestedOneWithoutCarsInput = {
+  create?: Prisma.XOR<Prisma.ModelVariantCreateWithoutCarsInput, Prisma.ModelVariantUncheckedCreateWithoutCarsInput> | runtime.Types.Skip
+  connectOrCreate?: Prisma.ModelVariantCreateOrConnectWithoutCarsInput | runtime.Types.Skip
   connect?: Prisma.ModelVariantWhereUniqueInput | runtime.Types.Skip
 }
 
-export type ModelVariantUpdateOneWithoutClassifiedsNestedInput = {
-  create?: Prisma.XOR<Prisma.ModelVariantCreateWithoutClassifiedsInput, Prisma.ModelVariantUncheckedCreateWithoutClassifiedsInput> | runtime.Types.Skip
-  connectOrCreate?: Prisma.ModelVariantCreateOrConnectWithoutClassifiedsInput | runtime.Types.Skip
-  upsert?: Prisma.ModelVariantUpsertWithoutClassifiedsInput | runtime.Types.Skip
+export type ModelVariantUpdateOneWithoutCarsNestedInput = {
+  create?: Prisma.XOR<Prisma.ModelVariantCreateWithoutCarsInput, Prisma.ModelVariantUncheckedCreateWithoutCarsInput> | runtime.Types.Skip
+  connectOrCreate?: Prisma.ModelVariantCreateOrConnectWithoutCarsInput | runtime.Types.Skip
+  upsert?: Prisma.ModelVariantUpsertWithoutCarsInput | runtime.Types.Skip
   disconnect?: Prisma.ModelVariantWhereInput | boolean | runtime.Types.Skip
   delete?: Prisma.ModelVariantWhereInput | boolean | runtime.Types.Skip
   connect?: Prisma.ModelVariantWhereUniqueInput | runtime.Types.Skip
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ModelVariantUpdateToOneWithWhereWithoutClassifiedsInput, Prisma.ModelVariantUpdateWithoutClassifiedsInput>, Prisma.ModelVariantUncheckedUpdateWithoutClassifiedsInput> | runtime.Types.Skip
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ModelVariantUpdateToOneWithWhereWithoutCarsInput, Prisma.ModelVariantUpdateWithoutCarsInput>, Prisma.ModelVariantUncheckedUpdateWithoutCarsInput> | runtime.Types.Skip
 }
 
 export type ModelVariantCreateNestedManyWithoutModelInput = {
@@ -496,7 +496,7 @@ export type ModelVariantUncheckedUpdateManyWithoutModelNestedInput = {
   deleteMany?: Prisma.ModelVariantScalarWhereInput | Prisma.ModelVariantScalarWhereInput[] | runtime.Types.Skip
 }
 
-export type ModelVariantCreateWithoutClassifiedsInput = {
+export type ModelVariantCreateWithoutCarsInput = {
   name: string
   yearStart: number
   yearEnd: number
@@ -505,7 +505,7 @@ export type ModelVariantCreateWithoutClassifiedsInput = {
   model: Prisma.ModelCreateNestedOneWithoutModelVariantsInput
 }
 
-export type ModelVariantUncheckedCreateWithoutClassifiedsInput = {
+export type ModelVariantUncheckedCreateWithoutCarsInput = {
   id?: number | runtime.Types.Skip
   name: string
   yearStart: number
@@ -515,23 +515,23 @@ export type ModelVariantUncheckedCreateWithoutClassifiedsInput = {
   updatedAt?: Date | string | runtime.Types.Skip
 }
 
-export type ModelVariantCreateOrConnectWithoutClassifiedsInput = {
+export type ModelVariantCreateOrConnectWithoutCarsInput = {
   where: Prisma.ModelVariantWhereUniqueInput
-  create: Prisma.XOR<Prisma.ModelVariantCreateWithoutClassifiedsInput, Prisma.ModelVariantUncheckedCreateWithoutClassifiedsInput>
+  create: Prisma.XOR<Prisma.ModelVariantCreateWithoutCarsInput, Prisma.ModelVariantUncheckedCreateWithoutCarsInput>
 }
 
-export type ModelVariantUpsertWithoutClassifiedsInput = {
-  update: Prisma.XOR<Prisma.ModelVariantUpdateWithoutClassifiedsInput, Prisma.ModelVariantUncheckedUpdateWithoutClassifiedsInput>
-  create: Prisma.XOR<Prisma.ModelVariantCreateWithoutClassifiedsInput, Prisma.ModelVariantUncheckedCreateWithoutClassifiedsInput>
+export type ModelVariantUpsertWithoutCarsInput = {
+  update: Prisma.XOR<Prisma.ModelVariantUpdateWithoutCarsInput, Prisma.ModelVariantUncheckedUpdateWithoutCarsInput>
+  create: Prisma.XOR<Prisma.ModelVariantCreateWithoutCarsInput, Prisma.ModelVariantUncheckedCreateWithoutCarsInput>
   where?: Prisma.ModelVariantWhereInput | runtime.Types.Skip
 }
 
-export type ModelVariantUpdateToOneWithWhereWithoutClassifiedsInput = {
+export type ModelVariantUpdateToOneWithWhereWithoutCarsInput = {
   where?: Prisma.ModelVariantWhereInput | runtime.Types.Skip
-  data: Prisma.XOR<Prisma.ModelVariantUpdateWithoutClassifiedsInput, Prisma.ModelVariantUncheckedUpdateWithoutClassifiedsInput>
+  data: Prisma.XOR<Prisma.ModelVariantUpdateWithoutCarsInput, Prisma.ModelVariantUncheckedUpdateWithoutCarsInput>
 }
 
-export type ModelVariantUpdateWithoutClassifiedsInput = {
+export type ModelVariantUpdateWithoutCarsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   yearStart?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   yearEnd?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
@@ -540,7 +540,7 @@ export type ModelVariantUpdateWithoutClassifiedsInput = {
   model?: Prisma.ModelUpdateOneRequiredWithoutModelVariantsNestedInput | runtime.Types.Skip
 }
 
-export type ModelVariantUncheckedUpdateWithoutClassifiedsInput = {
+export type ModelVariantUncheckedUpdateWithoutCarsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   name?: Prisma.StringFieldUpdateOperationsInput | string | runtime.Types.Skip
   yearStart?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
@@ -556,7 +556,7 @@ export type ModelVariantCreateWithoutModelInput = {
   yearEnd: number
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
+  cars?: Prisma.CarCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
 }
 
 export type ModelVariantUncheckedCreateWithoutModelInput = {
@@ -566,7 +566,7 @@ export type ModelVariantUncheckedCreateWithoutModelInput = {
   yearEnd: number
   createdAt?: Date | string | runtime.Types.Skip
   updatedAt?: Date | string | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedUncheckedCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutModelVariantInput | runtime.Types.Skip
 }
 
 export type ModelVariantCreateOrConnectWithoutModelInput = {
@@ -623,7 +623,7 @@ export type ModelVariantUpdateWithoutModelInput = {
   yearEnd?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
+  cars?: Prisma.CarUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
 }
 
 export type ModelVariantUncheckedUpdateWithoutModelInput = {
@@ -633,7 +633,7 @@ export type ModelVariantUncheckedUpdateWithoutModelInput = {
   yearEnd?: Prisma.IntFieldUpdateOperationsInput | number | runtime.Types.Skip
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string | runtime.Types.Skip
-  classifieds?: Prisma.ClassifiedUncheckedUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
+  cars?: Prisma.CarUncheckedUpdateManyWithoutModelVariantNestedInput | runtime.Types.Skip
 }
 
 export type ModelVariantUncheckedUpdateManyWithoutModelInput = {
@@ -651,11 +651,11 @@ export type ModelVariantUncheckedUpdateManyWithoutModelInput = {
  */
 
 export type ModelVariantCountOutputType = {
-  classifieds: number
+  cars: number
 }
 
 export type ModelVariantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classifieds?: boolean | ModelVariantCountOutputTypeCountClassifiedsArgs
+  cars?: boolean | ModelVariantCountOutputTypeCountCarsArgs
 }
 
 /**
@@ -671,8 +671,8 @@ export type ModelVariantCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types
 /**
  * ModelVariantCountOutputType without action
  */
-export type ModelVariantCountOutputTypeCountClassifiedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ClassifiedWhereInput | runtime.Types.Skip
+export type ModelVariantCountOutputTypeCountCarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarWhereInput | runtime.Types.Skip
 }
 
 
@@ -685,7 +685,7 @@ export type ModelVariantSelect<ExtArgs extends runtime.Types.Extensions.Internal
   createdAt?: boolean | runtime.Types.Skip
   updatedAt?: boolean | runtime.Types.Skip
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs> | runtime.Types.Skip
-  classifieds?: boolean | Prisma.ModelVariant$classifiedsArgs<ExtArgs> | runtime.Types.Skip
+  cars?: boolean | Prisma.ModelVariant$carsArgs<ExtArgs> | runtime.Types.Skip
   _count?: boolean | Prisma.ModelVariantCountOutputTypeDefaultArgs<ExtArgs> | runtime.Types.Skip
 }, ExtArgs["result"]["modelVariant"]>
 
@@ -724,7 +724,7 @@ export type ModelVariantSelectScalar = {
 export type ModelVariantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "yearStart" | "yearEnd" | "modelId" | "createdAt" | "updatedAt", ExtArgs["result"]["modelVariant"], runtime.Types.Skip>
 export type ModelVariantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs> | runtime.Types.Skip
-  classifieds?: boolean | Prisma.ModelVariant$classifiedsArgs<ExtArgs> | runtime.Types.Skip
+  cars?: boolean | Prisma.ModelVariant$carsArgs<ExtArgs> | runtime.Types.Skip
   _count?: boolean | Prisma.ModelVariantCountOutputTypeDefaultArgs<ExtArgs> | runtime.Types.Skip
 }
 export type ModelVariantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -738,7 +738,7 @@ export type $ModelVariantPayload<ExtArgs extends runtime.Types.Extensions.Intern
   name: "ModelVariant"
   objects: {
     model: Prisma.$ModelPayload<ExtArgs>
-    classifieds: Prisma.$ClassifiedPayload<ExtArgs>[]
+    cars: Prisma.$CarPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1143,7 +1143,7 @@ readonly fields: ModelVariantFieldRefs;
 export interface Prisma__ModelVariantClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   model<T extends Prisma.ModelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ModelDefaultArgs<ExtArgs>>): Prisma.Prisma__ModelClient<runtime.Types.Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  classifieds<T extends Prisma.ModelVariant$classifiedsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ModelVariant$classifiedsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClassifiedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cars<T extends Prisma.ModelVariant$carsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ModelVariant$carsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1576,27 +1576,27 @@ export type ModelVariantDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 /**
- * ModelVariant.classifieds
+ * ModelVariant.cars
  */
-export type ModelVariant$classifiedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ModelVariant$carsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Classified
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.ClassifiedSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Classified
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.ClassifiedOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ClassifiedInclude<ExtArgs> | null
-  where?: Prisma.ClassifiedWhereInput | runtime.Types.Skip
-  orderBy?: Prisma.ClassifiedOrderByWithRelationInput | Prisma.ClassifiedOrderByWithRelationInput[] | runtime.Types.Skip
-  cursor?: Prisma.ClassifiedWhereUniqueInput | runtime.Types.Skip
+  include?: Prisma.CarInclude<ExtArgs> | null
+  where?: Prisma.CarWhereInput | runtime.Types.Skip
+  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[] | runtime.Types.Skip
+  cursor?: Prisma.CarWhereUniqueInput | runtime.Types.Skip
   take?: number | runtime.Types.Skip
   skip?: number | runtime.Types.Skip
-  distinct?: Prisma.ClassifiedScalarFieldEnum | Prisma.ClassifiedScalarFieldEnum[] | runtime.Types.Skip
+  distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[] | runtime.Types.Skip
 }
 
 /**

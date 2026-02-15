@@ -29,8 +29,8 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Classifieds
- * const classifieds = await prisma.classified.findMany()
+ * // Fetch zero or more Cars
+ * const cars = await prisma.car.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,10 +40,10 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Classified
+ * Model Car
  * 
  */
-export type Classified = Prisma.ClassifiedModel
+export type Car = Prisma.CarModel
 /**
  * Model Customer
  * 

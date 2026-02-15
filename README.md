@@ -13,4 +13,3 @@ bun dev
 ```
 
 Открыть [http://localhost:3000]
-

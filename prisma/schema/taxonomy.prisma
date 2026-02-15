@@ -1,9 +1,9 @@
 model Make {
-  id          Int          @id @default(autoincrement())
-  name        String       @unique
-  image       String
-  models      Model[]
-  classifieds Classified[]
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  image  String
+  models Model[]
+  cars   Car[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -17,7 +17,7 @@ model Model {
   makeId        Int            @map("make_id")
   make          Make           @relation(fields: [makeId], references: [id], onDelete: Cascade)
   modelVariants ModelVariant[]
-  classifieds   Classified[]
+  cars          Car[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -27,14 +27,13 @@ model Model {
 }
 
 model ModelVariant {
-  id          Int          @id @default(autoincrement())
-  name        String
-  yearStart   Int
-  yearEnd     Int
-  model       Model        @relation(fields: [modelId], references: [id], onDelete: Cascade)
-  modelId     Int          @map("model_id")
-  classifieds Classified[]
-
+  id        Int      @id @default(autoincrement())
+  name      String
+  yearStart Int
+  yearEnd   Int
+  model     Model    @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId   Int      @map("model_id")
+  cars      Car[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
